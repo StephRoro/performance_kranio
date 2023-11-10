@@ -94,7 +94,7 @@ const numero = (resultadoDeseado - 12) * 8;
 console.log("El número buscado es:", numero);
 
 
-/*******************************************Operadores y Expresiones*************************************************/
+/*******************************************Estructuras de Control*************************************************/
 
 /*
 Las estructuras de control en Java son construcciones de programación  que se utilizan para controlar y ordenar el flujo de ejecución de un programa.
@@ -162,3 +162,67 @@ function sumaDigitos(numero) {
 
 const numeroEntero2 = 12345;
 console.log("Suma de dígitos:", sumaDigitos(numeroEntero2));
+
+
+/******************************************* Funciones *************************************************/
+
+/* Crea una aplicación que nos genere una cantidad de números enteros aleatorios que nosotros le pasaremos por teclado. 
+Crea un método donde pasamos como parámetros entre que números queremos que los genere, 
+podemos pedirlas por teclado antes de generar los números. Este método devolverá un número entero aleatorio. 
+Muestra estos números por pantalla.*/
+
+function generarNumeroAleatorio(minimo, maximo) {
+    return Math.floor(Math.random() * (maximo - minimo + 1)) + minimo;
+}
+
+const readline = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+readline.question('Introduce el número mínimo del rango: ', (minimo) => {
+    readline.question('Introduce el número máximo del rango: ', (maximo) => {
+        readline.question('Introduce la cantidad de números aleatorios a generar: ', (cantidad) => {
+            for (let i = 0; i < cantidad; i++) {
+                const numeroAleatorio = generarNumeroAleatorio(parseInt(minimo), parseInt(maximo));
+                console.log(`Número aleatorio #${i + 1}: ${numeroAleatorio}`);
+            }
+            readline.close();
+        });
+    });
+});
+
+
+
+
+/* Crea una aplicación que nos calcule el factorial de un número pedido por teclado, 
+lo realizara mediante un método al que le pasamos el número como parámetro. 
+Para calcular el factorial, se multiplica los números anteriores hasta llegar a uno. 
+Por ejemplo, si introducimos un 5, realizara esta operación 5*4*3*2*1=120.*/
+
+// function calcularFactorial(numero) {
+//     if (numero < 0) {
+//         return -1; // Valor inválido para el factorial de un número negativo.
+//     }
+    
+//     if (numero === 0 || numero === 1) {
+//         return 1;
+//     } else {
+//         let resultado = 1;
+//         for (let i = 2; i <= numero; i++) {
+//             resultado *= i;
+//         }
+//         return resultado;
+//     }
+// }
+
+// const readline = require('readline').createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+// });
+
+// readline.question('Introduce un número para calcular su factorial: ', (numero) => {
+//     const factorial = calcularFactorial(parseInt(numero));
+//     console.log(`El factorial de ${numero} es: ${factorial}`);
+//     readline.close();
+// });
